@@ -104,4 +104,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-CELERY_BROKER_URL = 'amqp://localhost'
+CELERY_BROKER_URL = 'amqp://nvtwlnko:NLpAEBBN1h4Jz_4vVFUoFS3Pf9b3cWvK@donkey.rmq.cloudamqp.com/nvtwlnko'
