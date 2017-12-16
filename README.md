@@ -21,4 +21,5 @@ export KOPS_STATE_STORE=s3://<<bucketname>>
 kops create cluster --zones us-east-1 --name <<cluster-name>> --yes
 ```
 ```The above command will create kubernetes cluster with one master and two nodes [ Master: m3.medium, Nodes: t2.medium ]
-and will generally take around 7-8 mins```
+and will generally take around 7-8 mins
+```
