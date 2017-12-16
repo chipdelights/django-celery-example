@@ -31,7 +31,7 @@ Make sure the efs is in the same vpc as the kubernetes cluster and whitelist the
 can mount the efs file system
 
 ### Kubernetes deployment
-####Set up the persistent volume claim
+#### Set up the persistent volume claim
 ```bash
 kubectl create -f k8s-templates/sqlite-configmap.yaml
 kubectl create -f k8s-templates/sqlite-storage.yaml
@@ -40,7 +40,7 @@ kubectl create -f k8s-templates/sqlite-pvc.yaml
 ```
 The above sets up the EFS filesystem as persistent volume which can be mounted by containers
 
-####Django depployment
+#### Django depployment
 ```bash
 kubectl create -f k8s-templates/django-deployment.yaml 
 ```
@@ -53,7 +53,7 @@ The above exposes the django deployment via ingress load balancer, you can get t
 the command `kubectl describe svc/django-service`, you should be able to point to the name on port 8000 and see the django
 page
 
-####Celery deployment
+#### Celery deployment
 ```bash
 kubectl create -f k8s-templates/celery-deployment.yaml
 ```
