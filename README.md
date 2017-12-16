@@ -40,7 +40,7 @@ kubectl create -f k8s-templates/sqlite-pvc.yaml
 ```
 The above sets up the EFS filesystem as persistent volume which can be mounted by containers
 
-#### Django depployment
+#### Django deployment
 ```bash
 kubectl create -f k8s-templates/django-deployment.yaml 
 ```
