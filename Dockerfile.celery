@@ -5,9 +5,7 @@ WORKDIR /app
 COPY . /app/
 
 RUN pip install -Ur requirements.txt
-RUN python3 manage.py migrate
 
-EXPOSE 8000
 
 CMD [ "celery", "-A", "mysite", "worker", "-l", "info", "-f", "/var/log/worker.log" ]
 
