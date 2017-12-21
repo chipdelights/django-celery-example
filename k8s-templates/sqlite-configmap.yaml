@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: efs-provisioner
 data:
-  file.system.id: fs-133c005a
+  file.system.id: fs-4540790c
   aws.region: us-east-1
   provisioner.name: aws-efs
 
