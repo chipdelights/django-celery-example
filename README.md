@@ -59,3 +59,22 @@ kubectl create -f k8s-templates/celery-deployment.yaml
 ```
 The above sets up celery workers which refers to the same broker url as django and also uses the same data volume for writing
 to sqlite3 as django app reads from
+
+#### Doing an upgrade
+```bash
+kubectl set image deployments/django-deployment django-web=<<docker-image>>
+```
+The above will bring up the new containers with the new images and terminates the old ones, and the rollout will be done in 
+a controlled way ensuring your app is not down, In this example lets say if you have 4 containers it will do 2 at a time
+
+#### Rollback an upgrade
+```bash
+kubectl rollout undo deployments/django-deployment
+```
+The above will rollback the recent django deployment, if you want to rollback to a specific revision you need to use the 
+revision at the end of the command, you can use the kubectl rollout history deployments/django-deployment to see the
+revisions, Please not you need to use --record in your deployments for this
+
+#### Deleting the cluster
+```bash
+kops delete cluster <<cluster-name>> --yes
