@@ -5,6 +5,9 @@ Example used in the blog post [How to Use Celery and RabbitMQ with Django](https
 ### Build and publish the docker images needed [ django & celery ]
 ```https://hub.docker.com/u/bseenu/```
 
+### Ensure to create the secrets in EC2 parameter store and give the kubernetes node role
+read access to the secrets
+
 ### Create the kubernetes cluster using kops
 #### Install kops, my environment is mac
 ```bash 
