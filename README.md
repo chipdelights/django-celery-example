@@ -18,9 +18,11 @@ aws s3 mb <<bucketname>>
 export KOPS_STATE_STORE=s3://<<bucketname>>
 ```
 ```bash
-kops create cluster --zones us-east-1a --name <<cluster-name>> --yes
+kops create -f k8s-templates/cluster.yaml
+kops create secret --name srini.cluster.k8s.local sshpublickey admin -i ~/.ssh/id_rsa.pub
+kops update cluster srini.cluster.k8s.local --yes
 ```
-The above command will create kubernetes cluster with one master and two nodes [ Master: m3.medium, Nodes: t2.medium ]
+The above command will create kubernetes cluster with one master and two nodes [ Master: t2.medium, Nodes: t2.micro ]
 and will generally take around 7-8 mins
 
 #### Create an EFS Fileshare to be used as data volume
