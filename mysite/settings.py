@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import boto3
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -103,5 +104,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+ssm_client = boto3.client('ssm','us-east-1')
+rmq_user = ssm_client.get_parameters(Names=['rmq_user'],WithDecryption=True)['Parameters'][0]['Value']
+rmq_password = ssm_client.get_parameters(Names=['rmq_password'],WithDecryption=True)['Parameters'][0]['Value']
 
-CELERY_BROKER_URL = 'amqp://nvtwlnko:NLpAEBBN1h4Jz_4vVFUoFS3Pf9b3cWvK@donkey.rmq.cloudamqp.com/nvtwlnko'
+CELERY_BROKER_URL = 'amqp://%s:%s@donkey.rmq.cloudamqp.com/nvtwlnko' %(rmq_user,rmq_password)
